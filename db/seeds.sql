@@ -2,18 +2,24 @@
 USE employee_db;
 
 INSERT INTO department (name)
-VALUES ("Alef"), ("Mem"), ("Shin");
+VALUES ("Elemental"), ("Planetary"), ("Zodiacal");
 
 -- Now Lets add some Roles for our Employees --
 -- WARNING!: Make sure your department table has values populated before continuing.--
 USE employee_db;
 
 INSERT INTO role (title, salary, department_id)
-VALUES ("Elemental", 3000.00, 1), ("Planetary", 700.00, 2), ("Zodiacal", 12.00, 3);
+VALUES ("Manager", 3000.00, 1), ("Luminary", 200.00, 2),("Inner", 300.00, 2), ("Outer", 200.00, 2), ("Cardinal", 4.00, 3), ("Fixed", 4.00, 3), ("Mutable", 4.00, 3);
 
 -- Finally we will add our employees--
 -- WARNING!: Make sure your role table has values populated before continuing.--
 USE employee_db;
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Alef", "Air", 1, NULL), ("Bet", "Mercury", 2, 1), ("Gimel", "Moon", 2, 1), ("Dalet", "Venus", 2, 2), ("He", "Aries", 3, 3), ("Vav", "Taurus", 3, 2), ("Zayin", "Gemini", 3, 1), ("Chet", "Cancer", 3, 1), ("Tet", "Leo", 3, 3), ("Yod", "Virgo", 3, 1), ("Kaf", "Jupiter", 2, 2), ("Lamed", "Libra", 3, 2),("Mem", "Water", 1, NULL), ("Nun", "Scorpio", 3, 3), ("Samech", "Sagittarius", 3, 2), ("Ayin", "Capricorn", 3, 1), ("Pe", "Mars", 2, 3), ("Tsade", "Aquarius", 3, 1), ("Qof", "Pisces", 3, 2), ("Resh", "Sun", 2, 3), ("Shin", "Fire", 1, NULL), ("Tav", "Saturn", 2, 1);
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Alef", "Air", 1), ("Bet", "Mercury", 3), ("Gimel", "Moon", 2), ("Dalet", "Venus", 3), ("He", "Aries", 5), ("Vav", "Taurus", 6), ("Zayin", "Gemini", 7), ("Chet", "Cancer", 5), ("Tet", "Leo", 6), ("Yod", "Virgo", 7), ("Kaf", "Jupiter", 4), ("Lamed", "Libra", 5),("Mem", "Water", 1), ("Nun", "Scorpio", 6), ("Samech", "Sagittarius", 7), ("Ayin", "Capricorn", 5), ("Pe", "Mars", 3), ("Tsade", "Aquarius", 6), ("Qof", "Pisces", 7), ("Resh", "Sun", 2), ("Shin", "Fire", 1), ("Tav", "Saturn", 4);
+
+UPDATE employee SET manager_id = 1 WHERE id=2 OR id=3 OR id=7 OR id=8 OR id=10 OR id=16 OR id=18 OR id=22;
+
+UPDATE employee SET manager_id = 13 WHERE id=4 OR id=6 OR id=11 OR id=12 OR id=15 OR id=19;
+
+UPDATE employee SET manager_id = 21 WHERE id=5 OR id=9 OR id=14 OR id=17 OR id=20;
