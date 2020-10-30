@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const cTable = require('console.table');
 const figlet = require('figlet');
 
+// All this code does is make a pretty header.
 figlet('Employee-Manager', function(err, data) {
     if (err) {
         console.log('Something went wrong...');
@@ -19,7 +20,24 @@ figlet('Employee-Manager', function(err, data) {
 // update employee roles
 
 //connect to database
+var con = mysql.createConnection({
+  host: "localhost",
 
+  // Your port; if not 3306
+  port: 3306,
+
+  // Your username
+  user: "root",
+
+  // Your password
+  password: "password",
+  database: "employee_db"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("connected as id " + con.threadId + "\n");
+});
 
 //functions for data flow
 
@@ -37,11 +55,11 @@ const home = () => {
   }]).then(res => {
     switch(res.main){
       case "View All Employees":
-        console.table();
+        readAll();
         break;
       default:
-        console.log("Rainbow Dash");
-        break;
+        con.end();
+        console.clear();
     }
   });
 }
@@ -55,6 +73,14 @@ home();
 //dep
 //role
 //emp
+function readAll() {
+  con.query("SELECT first_name, last_name FROM employee", function (err, res){
+    if (err) throw err;
+    console.table(res);
+    home();
+  });
+}
+
 //back
 //update emplyee role
 // click emp, what is new role choice?
