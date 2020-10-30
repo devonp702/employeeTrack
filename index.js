@@ -1,31 +1,51 @@
-const inqirer = require('inqirer');
+const inquirer = require('inquirer');
 const mysql = require('mysql');
 const cTable = require('console.table');
+const figlet = require('figlet');
 
+figlet('Employee-Manager', function(err, data) {
+    if (err) {
+        console.log('Something went wrong...');
+        console.dir(err);
+        return;
+    }
+    console.log("\n============================")
+    console.log(data)
+    console.log("\nAll in one management system. \nTo start, Press the up or down arrow. \n============================")
+});
 // mvp
 // create departments, roles, employees
 // read departments, roles, employees
 // update employee roles
 
+//connect to database
+
+
 //functions for data flow
 
 //front end inquirer
 //home screen with switch case for each
-const home() => {
-  inqirer.prompt([{
+const home = () => {
+  inquirer.prompt([{
     message: "Employee Database Manager: Please select an option",
     name: "main",
     type: "list",
     choices: [
-      "",
-      ""
+      "View All Employees",
+      "Exit"
     ]
   }]).then(res => {
     switch(res.main){
-      case "":
+      case "View All Employees":
+        console.table();
+        break;
+      default:
+        console.log("Rainbow Dash");
+        break;
     }
   });
 }
+home();
 //create
 //create departments
 //create roles
